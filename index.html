@@ -17,7 +17,16 @@
     <header>
         <nav>
             <div class="logo"><img src="" alt=""><span>Sobat Bekantan</span></div>
-            <ul class="nav-menu">
+
+            <!-- BURGER MENU BUTTON -->
+            <button class="burger-menu" id="burgerMenu" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAV MENU (HIDDEN ON MOBILE) -->
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#tentang">Tentang</a></li>
                 <li><a href="#lokasi">Lokasi</a></li>
@@ -57,13 +66,14 @@
             <img src="images/BBB.jpg" alt="Bekantan & Mangrove">
         </div>
     </section>
+
     <!-- ========================= -->
     <!-- BEKANTAN ADALAH (BARU) -->
     <!-- ========================= -->
     <section id="bekantan-adalah" class="section">
         <h2 class="section-title">Bekantan Adalah</h2>
-        <div class="about" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
-            <div style="flex:1;min-width:220px;">
+        <div class="about about-flex">
+            <div class="about-text">
                 <p>
                     Bekantan (Nasalis larvatus) adalah primata endemik Kalimantan yang hidup di kawasan mangrove dan
                     sepanjang muara sungai.
@@ -76,12 +86,13 @@
             </div>
 
             <!-- Placeholder gambar — ganti atribut src dengan gambar Anda -->
-            <div style="flex:0 0 320px;max-width:40%;">
+            <div class="about-image">
                 <img id="bekantanPlaceholder" src="images/pexels-miguel-cuenca-67882473-24552037.jpg"
-                    alt="Placeholder Bekantan" style="width:100%;border-radius:12px;display:block;">
+                    alt="Placeholder Bekantan">
             </div>
         </div>
     </section>
+
     <!-- ========== SECTION TENTANG ========== -->
     <section id="tentang" class="section">
         <div class="about">
@@ -258,6 +269,7 @@
             </div>
         </div>
     </section>
+
     <!-- ======================================== -->
     <!-- TAHU GAK SIH? (BARU) -->
     <!-- ======================================== -->
@@ -288,25 +300,26 @@
             </p>
         </div>
     </section>
+
     <!-- ========== SECTION KONTAK ========== -->
     <section id="kontak" class="section">
         <h2 class="section-title">Kontak & Jaringan</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:32px;">
-            <div>
+        <div class="kontak-grid">
+            <div class="kontak-card">
                 <h4>Kantor Pusat</h4>
                 <p>Jl. 8J6F+8P3, Gg. Cemp. 5, Kp. Enam, Kec. Tarakan Tim., Kota Tarakan, Kalimantan Utara<br>
                     Email: info@bekantan.org<br>
                     WhatsApp: +62 851-8396-6003
                 </p>
             </div>
-            <div>
+            <div class="kontak-card">
                 <h4>Media Sosial</h4>
                 <p>Instagram: @ays_indonesia<br>
                     YouTube: @AYSINDONESIA<br>
                     Facebook: @ays_indonesia
                 </p>
             </div>
-            <div>
+            <div class="kontak-card">
                 <h4>Mitra Kolaborasi</h4>
                 <div class="footer-mitra">
                     <img src="images/logo-wwf-indonesia-foto-wwf-77-removebg-preview.png" alt="WWF">
@@ -337,6 +350,31 @@
     </footer>
 
     <script>
+        // ===== BURGER MENU =====
+        const burgerMenu = document.getElementById('burgerMenu');
+        const navMenu = document.getElementById('navMenu');
+
+        burgerMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            burgerMenu.classList.toggle('active');
+        });
+
+        // Tutup menu saat klik link
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                burgerMenu.classList.remove('active');
+            });
+        });
+
+        // Tutup menu saat klik di luar
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                navMenu.classList.remove('active');
+                burgerMenu.classList.remove('active');
+            }
+        });
+
         // ✅ EDIT DI SINI: TAMBAH/UBAH SLIDE DI ARRAY INI — OTOMATIS MAU MUNCUL!
         const artikelSlides = [
             {
