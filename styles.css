@@ -314,6 +314,114 @@ nav {
     }
 }
 
+/* ============ BURGER MENU ============ */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-menu span {
+    width: 24px;
+    height: 2.5px;
+    background: #fff;
+    border-radius: 2px;
+    transition: .3s;
+}
+
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--hijau);
+        flex-direction: column !important;
+        gap: 0 !important;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease-in-out;
+        list-style: none;
+    }
+
+    .nav-menu.active {
+        max-height: 400px;
+    }
+
+    .nav-menu li a {
+        display: block;
+        padding: 12px 15px !important;
+        border-radius: 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-menu li:last-child a {
+        border-bottom: none;
+    }
+
+    nav {
+        position: relative;
+    }
+}
+
+/* ============ KONTAK SECTION ============ */
+.kontak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.kontak-card {
+    background: #fff;
+    padding: 16px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.kontak-card h4 {
+    color: var(--oranye);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.kontak-card p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .kontak-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .kontak-card {
+        padding: 12px 12px;
+    }
+}
+
 /* ============ GALLERY ============ */
 .gallery {
     display: grid;
